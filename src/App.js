@@ -3,18 +3,28 @@ import "./styles.css";
 
 var headingText = "inside outtt";
 
-export default function App() {
-  const [likeCounter, setLikeCounter] = useState(0);
+const emojiDictionary = {
+  "😃": "Smiling",
+  "😞": "disbelief",
+  "😢": "sad",
+  "🥡": "takeout box",
+  "💕": "love",
+  "😒": "annoyance"
+};
 
-  function likeClickHandler() {
-    var newlikeCounter = likeCounter + 1;
-    setLikeCounter(newlikeCounter);
+export default function App() {
+  var [inputValue, setinputValue] = useState("");
+
+  function inputChangeHandler(event) {
+    console.log(event.target.value);
+    setinputValue(event.target.value);
   }
 
   return (
     <div className="App">
       <h1>{headingText}</h1>
-      <button onClick={likeClickHandler}> Like Me! </button> {likeCounter}
+      <input onChange={inputChangeHandler} />
+      {inputValue}
     </div>
   );
 }
