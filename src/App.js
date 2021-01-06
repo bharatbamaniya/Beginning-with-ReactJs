@@ -11,14 +11,7 @@ const emojiDictionary = {
   "💕": "love",
   "😒": "annoyance"
 };
-const emojiList = [
-  "Smiling",
-  "disbelief",
-  "sad",
-  "takeout box",
-  "love",
-  "annoyance"
-];
+var emojiList = Object.keys(emojiDictionary);
 
 export default function App() {
   var [meaning, setMeaning] = useState("");
@@ -35,7 +28,7 @@ export default function App() {
   }
 
   function listItemclickHandler(item) {
-    console.log(item);
+    setMeaning(emojiDictionary[item]);
   }
 
   return (
@@ -45,18 +38,17 @@ export default function App() {
 
       <h2>{meaning}</h2>
 
-      <ul>
-        {emojiList.map((item, index) => (
-          <li
-            key={item}
-            onClick={() => listItemclickHandler(item)}
-            style={{ padding: "1rem" }}
-          >
-            {" "}
-            {item}{" "}
-          </li>
-        ))}
-      </ul>
+      <h3>emoji we know</h3>
+      {emojiList.map((item, index) => (
+        <span
+          key={item}
+          onClick={() => listItemclickHandler(item)}
+          style={{ fontSize: "2rem", padding: "1rem" }}
+        >
+          {" "}
+          {item}{" "}
+        </span>
+      ))}
     </div>
   );
 }
